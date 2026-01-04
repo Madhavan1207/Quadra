@@ -5,21 +5,26 @@ import { useState } from "react";
 function Login() {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isEntering, setIsEntering] = useState(false);
 
   const handleLogin = async () => {
-    if (!username || !password) return setError("Please enter username and password");
+    if (!email || !password) {
+      setError("Please enter email and password");
+      return;
+    }
+
     setIsEntering(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/users/login", {
+      const res = await fetch("http://localhost:5000/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
+
       const data = await res.json();
 
       if (!res.ok) {
@@ -28,7 +33,7 @@ function Login() {
         return;
       }
 
-      localStorage.setItem("user", JSON.stringify(data.data)); // save user
+      localStorage.setItem("user", JSON.stringify(data.data));
       navigate("/dashboard");
     } catch (err) {
       console.error(err);
@@ -47,12 +52,12 @@ function Login() {
 
         <div className="eco-input">
           <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             disabled={isEntering}
           />
-          <label>Username</label>
+          <label>Email</label>
           <span className="focus-line"></span>
         </div>
 
@@ -85,3 +90,4 @@ function Login() {
 }
 
 export default Login;
+
