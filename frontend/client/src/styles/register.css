@@ -1,0 +1,159 @@
+/* SCENE */
+.eco-register-scene {
+  min-height: 100vh;
+  background: #0b1c14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ENERGY FIELD */
+.energy-field {
+  position: absolute;
+  inset: -200px;
+  background:
+    radial-gradient(circle at 25% 30%, #3cb37155, transparent 45%),
+    radial-gradient(circle at 75% 25%, #8fd69455, transparent 45%),
+    radial-gradient(circle at 50% 80%, #f4a26155, transparent 40%);
+  animation: drift 20s infinite linear;
+  filter: blur(140px);
+}
+
+@keyframes drift {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* REGISTER SLAB */
+.register-slab {
+  position: relative;
+  z-index: 5;
+  width: 520px;
+  padding: 70px 60px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.14),
+    rgba(255,255,255,0.06)
+  );
+
+  backdrop-filter: blur(26px);
+  border-radius: 36px;
+
+  box-shadow:
+    0 70px 140px rgba(0,0,0,0.75),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+
+  text-align: center;
+}
+
+/* TITLES */
+.eco-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #e9f5ec;
+}
+
+.eco-subtitle {
+  margin-top: 10px;
+  margin-bottom: 46px;
+  font-size: 15px;
+  color: #b8d8c2;
+}
+
+/* INPUTS */
+.eco-input {
+  position: relative;
+  margin-bottom: 34px;
+}
+
+.eco-input input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(233,245,236,0.35);
+  padding: 14px 0;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+}
+
+.eco-input label {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  color: #a7cdb4;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.eco-input input:focus + label,
+.eco-input input:valid + label {
+  transform: translateY(-22px);
+  font-size: 12px;
+  color: #8fd694;
+}
+
+.focus-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #8fd694, #f4a261);
+  transition: width 0.35s ease;
+}
+
+.eco-input input:focus ~ .focus-line {
+  width: 100%;
+}
+
+/* REGISTER BUTTON */
+.eco-register-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 42px;
+  border: none;
+
+  background: linear-gradient(135deg, #3cb371, #f4a261);
+  color: #0b1c14;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.eco-register-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.85);
+}
+
+/* FOOTER */
+.eco-footer {
+  margin-top: 36px;
+  font-size: 14px;
+  color: #b8d8c2;
+}
+
+.eco-link {
+  margin-left: 6px;
+  color: #f4a261;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.eco-link:hover {
+  text-decoration: underline;
+}
